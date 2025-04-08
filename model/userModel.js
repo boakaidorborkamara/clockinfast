@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // create schema
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true, trim: true, maxLength: 15 },
+  name: { type: String, required: true, trim: true, maxLength: 50 },
 
   profile_image: { type: String, required: true, trim: true },
 
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
   },
 
-  institution_id: { type: ObjectId, required: true, trim: true },
+  institution_id: { type: mongoose.Types.ObjectId, required: true, trim: true },
 });
 
 // create model
