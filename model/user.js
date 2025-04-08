@@ -2,15 +2,38 @@ const mongoose = require("mongoose");
 
 // create schema
 const userSchema = new mongoose.Schema({
-  first_name: String,
-  middle_name: String,
-  last_name: String,
-  profile_image: String,
-  gender: String,
-  email: String,
-  password: String,
-  role: String,
-  code: String,
+  first_name: { type: String, required: true, trim: true, maxLength: 15 },
+
+  middle_name: { type: String, trim: true },
+
+  last_name: { type: String, required: true, trim: true, maxLength: 15 },
+
+  profile_image: { type: String, required: true, trim: true },
+
+  gender: {
+    type: String,
+    required: true,
+    enum: {
+      values: ["male", "female"],
+      message: "{VALUE} is not a valid gender",
+    },
+    lowercase: true,
+    trim: true,
+  },
+
+  email: { type: String, required: true, trim: true, maxLength: 20 },
+
+  password: { type: String, required: true, trim: true },
+
+  role: {
+    type: String,
+    enum: {
+      values: ["Coffee", "Tea"],
+      message: "{VALUE} is not a valid role",
+    },
+  },
+
+  code: { type: String, required: true, trim: true },
 });
 
 // add method on schema that the full name of the user

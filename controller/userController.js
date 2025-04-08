@@ -1,5 +1,6 @@
 const createUserController = (req, res) => {
-  console.log("working");
+  let new_user = req.body;
+
   return;
 };
 
